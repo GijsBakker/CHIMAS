@@ -11,15 +11,12 @@ Options:
 """
 from docopt import docopt
 import os
-from Self_Aligned import self_aligned
-from Mapping_Method import mapping_method
-from Remove_Chimeras import remove_from_file
+from ChimeraDetector.Self_Aligned import self_aligned
+from ChimeraDetector.Mapping_Method import mapping_method
+from ChimeraDetector.Remove_Chimeras import remove_from_file
 
 
-if __name__ == '__main__':
-    arguments = docopt(__doc__)
-    print(arguments)
-
+def main(arguments):
     file = arguments["<fastqfile>"]
     chimeras = []
     if os.path.exists(file):
@@ -42,3 +39,10 @@ if __name__ == '__main__':
         print("Self chimeras removed from file", file)
     else:
         print("File not found! The file or file path given does not exist.")
+
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__)
+    print(arguments)
+    main(arguments)
+

@@ -8,8 +8,8 @@ usage = """
 CHIMAS.py: CHIMAS.py is used to ..... TODO
 
 Usage:
-    CHIMAS.py <fastq_file> -k <kmer_size> [-r <dpi>] [-s <self>] [-d <dot_size>] [--graphics] [--paf_file=<paf_file>] 
-    [--output_file=<output_file>]
+    CHIMAS.py <fastq_file> -k <kmer_size> --method <method> [-r <dpi>] [-s <self>] [-d <dot_size>] 
+    [--graphics] [--paf_file=<paf_file>] [--output_file=<output_file>]
     CHIMAS.py (-h | --help | --version)
 
 Options:
@@ -21,6 +21,9 @@ Options:
     --output_file=<output_file>     Path to the output Fasta data set created by SLEAP. 
                                     (default: {input_name}_contigs.fasta)
     --graphics                      Display SLEAP information using the graphics.py script. [default: False]
+    
+      -f, --fastq
+      -m, --method      options: "self_allign", "mapping" and "both"
     
 Author: Gijs Bakker, Ijsbrand Pool, Lisan Eisinga
 Version: 1.0
@@ -34,7 +37,7 @@ import os
 from docopt import docopt
 from VVODKA_dir import VVODKA
 from SLAEP import assembly
-
+from ChimeraDetector import chimeradetector
 
 def main(args):
     kmer_size = int(args['-k'])
@@ -48,6 +51,7 @@ def main(args):
         base_name = os.path.splitext(fastq_file)[0]
         output_file = f"{base_name}_contigs.fasta"
 
+    chimeradetector.main(args)
     assembly.main(args)
     print("Done Assembly")
     VVODKA.vvodka(kmer_size, [output_file], on_self, dpi, dot_size, pre_extension="")
