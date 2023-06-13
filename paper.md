@@ -1,6 +1,5 @@
 #  CHIMAS (Chimera Detector and Long Read Assembler with Dotplot Visualization)
 
-[![DOI](https://joss.theoj.org/papers/DOI/badge.svg)](https://doi.org/DOI)# FILL IN
 
 ## Summary
 
@@ -34,31 +33,23 @@ The tools can be run with these statements on the correct data sets.
 
 ## Documentation
 
-The software can be found in its complete set on REPO.
+The software can be found in its complete set on this repository: https://github.com/GijsBakker/CHIMAS
 
 ## Examples
 
-The CHIMAS software can be used on FastQ data sets created by the Oxford nanopore MinION. Since this is its first publication, the software has yet to be applied to use cases.
-
-Provide concrete examples or use cases where your software has been applied. Show how it solves specific problems and provides benefits.
+The CHIMAS software can be used on FastQ data sets created by the Oxford nanopore MinION. Since this is its first publication, the software has yet to be applied to use cases. The data can be tested on 'foo-reads.fq' which is a example data set on which all tools run.
 
 ## Evaluation
 
-The tool runs quickly. It can be more efficient, especially the ChimeraDetector and the SLAEP assembler. However, it is memory efficient.
-
-Discuss the evaluation of your software, including benchmarking, performance analysis, or comparisons with existing solutions. Provide insights into its effectiveness and efficiency.
+The tool runs quickly. It can be more efficient, especially the ChimeraDetector and the SLAEP assembler. However, it is memory efficient. The VVODKA dot-plotter can be slow when the data set becomes larger.
 
 ## Limitations
 
-The CHIMAS software has its limitation, as every tool does. The ChimeraDetector functions only with FastQ data set in a specific format, SLAEP requires a PAF file, and this limits its overlap graph, which can cause sub-optimal assemblies and VVODKA: LIMITATIONS HERE
-
-Highlight any known limitations or areas where further improvements are required. Discuss potential future directions for development.
+The CHIMAS software has its limitation, as every tool does. The ChimeraDetector functions only with FastQ data set in a specific format, SLAEP requires a PAF file, and this limits its overlap graph, which can cause sub-optimal assemblies and VVODKA is not optimized for speed in order to capture all overlapping k-mers, but this means that it takes VVODKA 10 minutes to create a dot plot corresponding to a fasta files of 400 KB, this time raises exponential
 
 ## Conclusion
 
-The critical contributions of the CHIMAS software are that now self chimeras can be detected, students can learn about genome assembly and GIJS 
-
-Summarize the critical contributions of your software and its potential impact in the field. Discuss any plans or ongoing developments.
+The critical contributions of the CHIMAS software are that now self chimeras can be detected, students can learn about genome assembly and VVODKA makes genome dot-plots on which conclusions about the data can be made, such as integrated viral presences in sequences.
 
 ## Acknowledgements
 
@@ -66,7 +57,15 @@ For the creation of the software, we, the authors, would like to acknowledge Tho
 
 ## References
 
-List any relevant references, papers, or resources associated with your software.
+For the creation of this tool no external sources were used, Flye, Canu and SPAdes were used. These references are:
+
+* SPAdes: "A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing" by Bankevich et al. 
+
+* Flye: "Assembling Genomes and Mini-metagenomes from Highly Chimeric Reads" by Kolmogorov et al.
+
+* Canu: "scalable and accurate long-read assembly via adaptive k-mer weighting and repeat separation" by Koren et al.
+
+* Minimap2: "pairwise alignment for nucleotide sequences" by Li
 
 ## License
 
@@ -74,7 +73,7 @@ The license for the software is free to use, and anyone can download the tool an
 
 ## How to Cite
 
-To cite the software, please use the following site: CITE
+To cite the software, please use the following site: The CHIMAS GitHub repository can be found at https://github.com/GijsBakker/CHIMAS. Please use this repository as citation.
 
 ## Contributing
 
