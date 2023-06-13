@@ -8,10 +8,11 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 
-def create_dot_plot(positions_x, positions_y, name_one, name_two, kmer_size, size=2):
+def create_dot_plot(positions_x, positions_y, name_one, name_two, kmer_size, size=2, pre_extension="../"):
     """
     Creates a dot plot showing the k-mers present in both sequences. The first nucleotide of the duplicate k-mers are
         marked with a dot
+    :param pre_extension: adds pre-extension to the result name
     :param size: Size of the points
     :param kmer_size Size of the k-mers
     :param name_one: Name of the first sequence
@@ -22,10 +23,10 @@ def create_dot_plot(positions_x, positions_y, name_one, name_two, kmer_size, siz
     """
     if name_two:
         title = f"Genome dot plot {name_one} against {name_two}. {kmer_size}-mer."
-        file = f"../Results/{name_one}-{name_two}.png"
+        file = f"{pre_extension}Results/{name_one}-{name_two}.png"
     else:
         title = f"Genome dot plot {name_one} against itself. {kmer_size}-mer."
-        file = f"../RESULTS/{name_one}_on_self.png"
+        file = f"{pre_extension}RESULTS/{name_one}_on_self.png"
         name_two = name_one
     mpl.use('TkAgg')
 

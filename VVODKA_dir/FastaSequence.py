@@ -4,7 +4,7 @@
 FastaSequence.py: Is used to create fastaSequences when combining sequences
 """
 
-import TwoBitEncoding
+from VVODKA_dir import TwoBitEncoding
 
 
 class FastaSequence:

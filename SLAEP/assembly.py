@@ -31,7 +31,7 @@ import pandas as pd
 import psutil
 from Bio.SeqIO.QualityIO import FastqGeneralIterator
 from docopt import docopt
-import visualise
+from SLAEP import visualise
 
 
 def read_fastq_file(fastq_file):

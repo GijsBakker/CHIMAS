@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
 usage = """
-VVODKA.py: VVODKA.py is used to handle the user input, call the right functions and return the final output
+VVODKA_dir.py: VVODKA_dir.py is used to handle the user input, call the right functions and return the final output
 
 Usage:
-    VVODKA.py -k <kmer_size> [-r <dpi>] [-s <self>] [-d <dot_size>] <files>...
-    VVODKA.py (-h | --help | --version)
+    VVODKA_dir.py -k <kmer_size> [-r <dpi>] [-s <self>] [-d <dot_size>] <files>...
+    VVODKA_dir.py (-h | --help | --version)
     
 Options:
     -k <kmer_size>  Specify the size of the k-mer
@@ -17,13 +17,13 @@ Options:
 """
 
 __author__ = "Gijs Bakker"
-__version__ = 1.0
+__version__ = 2.0
 
 from docopt import docopt
-import InlineKmer
-import FastaSequence
-import CreateDotPlot
-import ReadFasta
+from VVODKA_dir import InlineKmer
+from VVODKA_dir import FastaSequence
+from VVODKA_dir import CreateDotPlot
+from VVODKA_dir import ReadFasta
 
 
 def get_sequences(files):
@@ -81,9 +81,10 @@ def get_plot_info(on_self, sequences, kmer_size):
     return plot_info_list
 
 
-def vvodka(kmer_size, files, on_self, dpi, dot_size):
+def vvodka(kmer_size, files, on_self, dpi, dot_size, pre_extension="../"):
     """
     This function creates genome dot plots corresponding to the input data.
+    :param pre_extension: adds pre-extension to the location of the dot plot
     :param kmer_size: The wanted k-mer size used to find overlapping k-mers
     :param files: A list of fasta files, used to create the genome dot plots.
     :param on_self: String that marks if genomes should be plotted on itself.
@@ -109,13 +110,11 @@ def vvodka(kmer_size, files, on_self, dpi, dot_size):
 
     for plot_info in plot_info_list:
         fig, file = CreateDotPlot.create_dot_plot(plot_info[0], plot_info[1], plot_info[2], plot_info[3], kmer_size,
-                                                  dot_size)
+                                                  dot_size, pre_extension=pre_extension)
         fig.savefig(file, dpi=dpi)
 
 
 def main(args):
-    # start = time.time()
-
     kmer_size = int(args['-k'])
     files = args['<files>']
     on_self = args['-s']
