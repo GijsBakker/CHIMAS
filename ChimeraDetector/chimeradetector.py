@@ -16,7 +16,7 @@ from ChimeraDetector.Remove_Chimeras import remove_from_file
 
 
 def main(arguments):
-    file = arguments["<fastqfile>"]
+    file = arguments["<fastq_file>"]
     chimeras = []
     if os.path.exists(file):
         if arguments["<method>"] == "self_aligned":

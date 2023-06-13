@@ -22,7 +22,6 @@ Options:
                                     (default: {input_name}_contigs.fasta)
     --graphics                      Display SLEAP information using the graphics.py script. [default: False]
     
-      -f, --fastq
       -m, --method      options: "self_allign", "mapping" and "both"
     
 Author: Gijs Bakker, Ijsbrand Pool, Lisan Eisinga
